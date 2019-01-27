@@ -39,3 +39,8 @@ For fun, here are a list of words with their prediction:
 | grossify | grsity | ![8](samples/8.jpg "8") 	|
 | scutular | scutular |  ![9](samples/9.jpg "9")	|
 | crispened | crispened | ![10](samples/10.jpg "10") 	|
+
+说明：该模型不能识别数字，且要求白底黑字，效果不是很好。
+      batchsize不能随便取，比如4 10 等，否则会有一些错误
+	  object of type 'numpy.int64' has no len()
+	  记得根据实际，修改batchsize，如果有其他报错，多半是batchsize不对。

@@ -38,6 +38,8 @@ class DataManager(object):
 
         count = 0
         skipped = 0
+        print('path:',self.examples_path)
+        print('max_char_count:',self.max_char_count)
         for f in os.listdir(self.examples_path):
             if len(f.split('_')[0]) > self.max_char_count:
                 continue
@@ -92,13 +94,15 @@ class DataManager(object):
 
     def __generate_all_test_batches(self):
         test_batches = []
+        print('offset:',self.current_test_offset + self.batch_size,'data_len£º',self.data_len)
         while not self.current_test_offset + self.batch_size > self.data_len:
             old_offset = self.current_test_offset
 
             new_offset = self.current_test_offset + self.batch_size
 
             self.current_test_offset = new_offset
-
+            print('old_offset:',old_offset,'new_offset:',new_offset)
+        #    print('zip:',zip(*self.data[old_offset:new_offset]))
             raw_batch_x, raw_batch_y, raw_batch_la = zip(*self.data[old_offset:new_offset])
 
             batch_y = np.reshape(

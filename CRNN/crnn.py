@@ -211,7 +211,9 @@ class CRNN(object):
     def test(self):
         with self.__session.as_default():
             print('Testing')
+    #        print('test_batches',self.__data_manager.test_batches)
             for batch_y, _, batch_x in self.__data_manager.test_batches:
+             #   print('batch_y',batch_y,'batch_x',batch_x)
                 decoded = self.__session.run(
                     self.__decoded,
                     feed_dict={
